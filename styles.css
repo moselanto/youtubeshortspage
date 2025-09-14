@@ -612,25 +612,3 @@ body {
     right: -40px;
   }
 }
-
-#yt-short-container {
-  position: relative;
-  display: flex;
-  flex-direction: column; /* or row, depending on layout */
-  align-items: flex-start; /* or center */
-}
-
-#yt-short-video {
-  width: 100%;
-  /* add margin below for buttons if vertical */
-  margin-bottom: 10px; 
-}
-
-.interaction-buttons {
-  position: relative; /* or absolute if positioning freely */
-  /* Adjust buttons container size and position */
-  width: 100%;
-  display: flex;
-  justify-content: flex-start; /* or flex-end or center */
-  gap: 10px; /* spacing between buttons */
-}
