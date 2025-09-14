@@ -87,3 +87,46 @@ commentInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") addComment();
 });
 
+
+
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var players = {}; // Store YT.Player instances by iframe/container id
+
+  // 2. Function called by YouTube API when ready
+  function onYouTubeIframeAPIReady() {
+    // Assuming your video containers have class 'yt-player'
+    document.querySelectorAll('.yt-player').forEach(function(container) {
+      var videoId = container.getAttribute('data-video-id');
+      var playerId = container.id;
+
+      players[playerId] = new YT.Player(playerId, {
+        videoId: videoId,
+        playerVars: {
+          'autoplay': 1,
+          'mute': 1,
+          'controls': 0,
+          'loop': 1,
+          'playlist': videoId, // loop requires playlist param same as videoId
+          'modestbranding': 1,
+          'rel': 0,
+          'playsinline': 1
+        },
+        events: {
+          'onReady': function(event) {
+            event.target.playVideo();
+          },
+          'onStateChange': function(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+              event.target.playVideo(); // Loop the video manually
+            }
+          }
+        }
+      });
+    });
+  }
+
+
