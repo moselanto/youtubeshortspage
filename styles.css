@@ -341,7 +341,7 @@ body {
   height: 640px; /* fixed height */
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
-  background: #111; /* optional dark background */
+  background: #fff; /* optional dark background */
 }
 
 
