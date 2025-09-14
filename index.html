@@ -193,6 +193,23 @@
     </div>
   </div>
 
+   <!-- Interaction Icons (outside video) -->
+  <div class="shorts-actions">
+    <button class="action-btn like">👍</button>
+    <button class="action-btn comment">💬</button>
+    <button class="action-btn share">↗️</button>
+  </div>
+</div>
+
+<!-- Overlay for comments -->
+<div id="overlay" style="display: none;">
+  <div class="comments-section">
+    <div id="commentsBody"></div>
+    <input id="commentInput" type="text" placeholder="Add a comment..." />
+    <button onclick="closeComments()">Close</button>
+  </div>
+</div>
+
   <!-- Comments Panel -->
   <div class="overlay" id="overlay">
     <div class="comments-panel">
