@@ -1,5 +1,4 @@
-<script>
-  const slider = document.getElementById("shortsSlider");
+ const slider = document.getElementById("shortsSlider");
   const arrowUp = document.getElementById("arrowUp");
   const arrowDown = document.getElementById("arrowDown");
   const cards = document.querySelectorAll(".shorts-card");
@@ -11,14 +10,14 @@
   };
 
   // Navigation
-  arrowDown.addEventListener("click", () => {
+  arrowDown?.addEventListener("click", () => {
     if (index < cards.length - 1) {
       index++;
       updateSlider();
     }
   });
 
-  arrowUp.addEventListener("click", () => {
+  arrowUp?.addEventListener("click", () => {
     if (index > 0) {
       index--;
       updateSlider();
@@ -87,9 +86,8 @@
     }
   };
 
-  commentInput.addEventListener("keydown", (e) => {
+  commentInput?.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       addComment();
     }
   });
-</script>
