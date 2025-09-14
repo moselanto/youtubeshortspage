@@ -1,61 +1,47 @@
-// ────────── Search Bar (mobile toggle) ──────────
-const searchBar = document.querySelector(".search");
-const searchInput = document.querySelector(".search input");
-const searchBtn = document.querySelector(".search button");
+// ────────── Scroll-Snap Slider Logic (disabled) ──────────
+// Commented out outdated slider control to prevent competing logic
+/*
+const slider = document.getElementById('shortsSlider');
+const arrowUp = document.getElementById('arrowUp');
+const arrowDown = document.getElementById('arrowDown');
+const cards = document.querySelectorAll('.shorts-card');
+let index = 0;
 
-searchBtn.addEventListener("click", (e) => {
-  if (window.innerWidth <= 480) {
-    e.preventDefault();
-    searchInput.classList.toggle("active");
-    if (searchInput.classList.contains("active")) searchInput.focus();
+function updateSlider() {
+  slider.style.transform = `translateY(${-index * (cards[0].offsetHeight + 40)}px)`;
+}
+
+arrowDown.addEventListener('click', () => {
+  if (index < cards.length - 1) {
+    index++;
+    updateSlider();
   }
 });
-
-document.addEventListener("click", (e) => {
-  if (
-    window.innerWidth <= 480 &&
-    !searchBar.contains(e.target) &&
-    searchInput.classList.contains("active")
-  ) {
-    searchInput.classList.remove("active");
+arrowUp.addEventListener('click', () => {
+  if (index > 0) {
+    index--;
+    updateSlider();
   }
 });
-
-searchBar.addEventListener("click", (e) => {
-  if (window.innerWidth <= 480) e.stopPropagation();
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' && index < cards.length - 1) {
+    index++;
+    updateSlider();
+  } else if (e.key === 'ArrowUp' && index > 0) {
+    index--;
+    updateSlider();
+  }
 });
-
-// ────────── Create Dropdown ──────────
-const createBtn = document.getElementById("createBtn");
-const dropdownMenu = document.getElementById("dropdownMenu");
-
-createBtn.addEventListener("click", () => {
-  dropdownMenu.style.display =
-    dropdownMenu.style.display === "block" ? "none" : "block";
+document.addEventListener('wheel', (e) => {
+  if (e.deltaY > 0 && index < cards.length - 1) {
+    index++;
+    updateSlider();
+  } else if (e.deltaY < 0 && index > 0) {
+    index--;
+    updateSlider();
+  }
 });
-
-window.addEventListener("click", (e) => {
-  if (!e.target.closest(".create-dropdown")) dropdownMenu.style.display = "none";
-});
-
-// ────────── Highlight Active Chip ──────────
-const chips = document.querySelectorAll(".chip");
-chips.forEach((chip) =>
-  chip.addEventListener("click", () => {
-    document.querySelector(".chip.active")?.classList.remove("active");
-    chip.classList.add("active");
-  })
-);
-
-// ────────── Sidebar Drawer Toggle ──────────
-const menuBtn = document.getElementById("menuBtn");
-const drawer = document.getElementById("drawer");
-const content = document.querySelector(".content");
-
-menuBtn.addEventListener("click", () => {
-  drawer.classList.toggle("active");
-  content.classList.toggle("shifted");
-});
+*/
 
 // ────────── Description Toggle ──────────
 function toggleDesc(el) {
@@ -80,15 +66,14 @@ function closeComments() {
 }
 
 function addComment() {
-  const text = commentInput.value.trim();
-  if (text !== "") {
+  if (commentInput.value.trim() !== "") {
     const div = document.createElement("div");
     div.className = "comment";
     div.innerHTML = `
       <img src="https://via.placeholder.com/30">
       <div class="comment-content">
         <div class="comment-user">You</div>
-        <div class="comment-text">${text}</div>
+        <div class="comment-text">${commentInput.value}</div>
         <div class="comment-emojis">
           <span>👍</span><span>❤️</span><span>😂</span>
         </div>
@@ -101,3 +86,4 @@ function addComment() {
 commentInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") addComment();
 });
+
