@@ -2,45 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YouTube Shorts Clone</title>
+  <title>YouTube clone group 1</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Top Navbar -->
+  <!-- ✅ Add Voice Search + Create Dropdown without removing existing code -->
+  <!-- Topbar -->
   <div class="topbar">
-    <div class="topbar-left">
-      <img src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg" alt="YouTube" class="logo" />
-    </div>
-    <div class="search-box"><input type="text" placeholder="Search" /></div>
-    <div class="topbar-right">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 14a3 3 0 003-3V5a3 3 0 00-6 0v6a3 3 0 003 3z" />
-        <path d="M19 11a7 7 0 01-14 0" />
-        <path d="M12 19v4" />
-      </svg>
-      <svg viewBox="0 0 24 24">
-        <path d="M12 5v14M5 12h14" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" />
-      </svg>
-      <svg viewBox="0 0 24 24">
-        <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-      </svg>
-      <img src="https://via.placeholder.com/32" alt="Profile" class="profile" />
-    </div>
-  </div>
-  <div class="content">
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <div class="menu-item">🏠 Home</div>
-      <div class="menu-item">🎬 Shorts</div>
-      <div class="menu-item">📺 Subscriptions</div>
-      <div class="subscriptions">
-        <h4>Subscriptions</h4>
-        <div class="subscription-item"><img src="https://via.placeholder.com/30" /> Moonbug Kids</div>
-        <div class="subscription-item"><img src="https://via.placeholder.com/30" /> LooLoo Kids</div>
-        <div class="subscription-item"><img src="https://via.placeholder.com/30" /> Johny’s Compilation</div>
+    <div class="nav-left">
+      <button class="menu-btn" id="menuBtn">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+      </button>
+       <div class="logo">
+        <!-- Option 1: Local file -->
+        <img src="images/youtube-logo.png" alt="YouTube" class="logo-img">
+
+        <!-- Option 2: Direct from Wikimedia (no file needed) -->
+        <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube" class="logo-img"> -->
       </div>
     </div>
+    <!-- Search bar (only text + search button) -->
+    <div class="search">
+      <input type="text" placeholder="Search" id="searchInput" />
+      <button>
+        <svg viewBox="0 0 24 24">
+          <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Voice search + user actions -->
+    <div class="user-actions">
+      <!-- 🎤 Voice search button -->
+      <button id="voiceBtn" class="voice-btn" title="Search with your voice">🎤</button>
+      <!-- ➕ Create button with dropdown -->
+      <div class="create-dropdown">
+        <svg id="createBtn" viewBox="0 0 24 24">
+          <path d="M12 5v14m-7-7h14" stroke="#606060" stroke-width="2" fill="none" stroke-linecap="round" />
+        </svg>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="#">📹 Upload video</a>
+          <a href="#">🔴 Go live</a>
+          <a href="#">📝 Create post</a>
+        </div>
+      </div>
+      <!-- Notifications + Profile -->
+      <svg viewBox="0 0 24 24"><path d="M12 24c1.1 0 2-.9 2-2h-4a2 2 0 002 2zm6-6V11c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 00-3 0v.68C7.63 5.36 6 7.92 6 11v7l-2 2v1h16v-1l-2-2z" /></svg>
+      <img
+        class="profile"
+        src="https://yt3.ggpht.com/yti/ANjgQV8vfw_JjwyHqfdtMnwMKypM4A34Tg3Y9Rk_nUYLhcTKUJ0=s88-c-k-c0x00ffffff-no-rj"
+        alt="Profile"
+      />
+    </div>
+  </div>
+
+  <div class="user-actions">
+    <svg viewBox="0 0 24 24"><path d="M12 24c1.1 0 2-.9 2-2h-4a2 2 0 002 2zm6-6V11c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 00-3 0v.68C7.63 5.36 6 7.92 6 11v7l-2 2v1h16v-1l-2-2z" /></svg>
+    <img class="profile" src="https://i.pravatar.cc/40?img=20" alt="Profile" />
+  </div>
+
+  <!-- Compact Sidebar -->
+  <div class="sidebar">
+    <a href="index.html"><span class="icon">🏠</span>Home</a>
+    <a href="shorts.html"><span class="icon">🎬</span> Shorts</a>
+    <a href="#"><span class="icon">📺</span>Subs</a>
+    <a href="#"><span class="icon">📚</span>Library</a>
+  </div>
+
+  <!-- Expandable Drawer -->
+  <div class="drawer" id="drawer">
+    
+    <a href="index.html"><span class="icon">🏠</span> Home</a>
+    <a href="shorts.html"><span class="icon">🎬</span> Shorts</a>
+    <a href="#"><span class="icon">📺</span> Subscriptions</a>
+    <a href="account.html"><span class="icon">👤</span> You</a>
+    <a href="#"><span class="icon">🕒</span> History</a>
+    <a href="#"><span class="icon">🎵</span> Playlists</a>
+    <a href="#"><span class="icon">📹</span> Your videos</a>
+    <a href="#"><span class="icon">⏱</span> Watch later</a>
+    <a href="#"><span class="icon">👍</span> Liked videos</a>
+    <hr />
+    <a href="#"><span class="icon">📺</span> Subscriptions</a>
+    <a href="#">Moonbug Kids - Best Cars and Truck Videos for Kids</a>
+    <a href="#">LooLoo Kids - Nursery Rhymes and Children's Songs</a>
+  </div>
+
+  <!-- Overlay (separate from drawer) -->
+  <div class="overlay" id="overlay"></div>
+
+
     
     <!-- Shorts Section -->
     <div class="shorts-container">
