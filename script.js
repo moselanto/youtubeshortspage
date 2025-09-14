@@ -91,3 +91,30 @@
       addComment();
     }
   });
+
+  // Switch Tabs
+  const shortsTab = document.getElementById("shortsTab");
+  const videosTab = document.getElementById("videosTab");
+  const toggleSwitch = document.getElementById("toggleSwitch");
+
+  shortsTab.addEventListener("click", () => {
+    shortsTab.classList.add("active");
+    videosTab.classList.remove("active");
+    toggleSwitch.checked = false;
+  });
+
+  videosTab.addEventListener("click", () => {
+    videosTab.classList.add("active");
+    shortsTab.classList.remove("active");
+    toggleSwitch.checked = true;
+  });
+
+  toggleSwitch.addEventListener("change", () => {
+    if (toggleSwitch.checked) {
+      videosTab.classList.add("active");
+      shortsTab.classList.remove("active");
+    } else {
+      shortsTab.classList.add("active");
+      videosTab.classList.remove("active");
+    }
+  });
